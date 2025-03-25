@@ -1,0 +1,21 @@
+.inicio {
+    display: flex;
+    /* justify-content: end; */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.favoritos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.navbar {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+.ul {
+    display: flex;
+}
