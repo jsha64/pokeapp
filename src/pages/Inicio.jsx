@@ -1,11 +1,13 @@
-// import Nabvar from "../components/Navbar";
+import Nabvar from "../components/Navbar";
 
 const Inicio = () => {
   return (
-  <div className="inicio">
-    <h1>Inicio</h1>
-    {/* <Nabvar /> */}
-  </div>
+    <>
+      <Nabvar />
+      <div className="contenedor_inicio">
+        <h1>Inicio</h1>
+      </div> 
+    </>
   );
 };
 

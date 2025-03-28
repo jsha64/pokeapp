@@ -1,16 +1,18 @@
-// const Nabvar = () => {
-//   return (
-//     <nav className="navbar">
-//       <ul className="ul">
-//         <li>
-//           <a href="/inicio">Inicio</a>
-//         </li>
-//         <li>
-//           <a href="/favoritos">Favoritos</a>
-//         </li>
-//       </ul>
-//     </nav>
-//   );
-// }
+import { Link } from 'react-router-dom';
 
-// export default Nabvar;
+const Nabvar = () => {
+  return (
+    <nav className="navbar">
+      <ul className="ul">
+        <li>
+          <Link to="/">Inicio</Link>
+        </li>
+        <li>
+          <Link to="/favoritos">Favoritos</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+}
+
+export default Nabvar;

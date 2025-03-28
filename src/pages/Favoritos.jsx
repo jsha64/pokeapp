@@ -1,8 +1,13 @@
+import Nabvar from "../components/Navbar";
+
 const Favoritos = () => {
     return (
-        <div className="favoritos">
+      <>
+        <Nabvar />
+        <div className="contenedor_favoritos">
             <h1>Favoritos</h1>
         </div>
+      </>
     );
 }
   
