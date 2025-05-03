@@ -1,12 +1,11 @@
 import Nabvar from "../components/Navbar";
+import { CardPokemons } from "../components/CardPokemons";
 
 const Inicio = () => {
   return (
     <>
       <Nabvar />
-      <div className="contenedor_inicio">
-        <h1>Inicio</h1>
-      </div> 
+      <CardPokemons />
     </>
   );
 };
