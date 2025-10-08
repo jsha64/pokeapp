@@ -1,49 +1,28 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { usePokemons } from "../hooks/usePokemons";
+import { PokemonCard } from "./PokemonCard";
+import { PokemonModal } from "./PokemonModal";
 
 export const CardPokemons = () => {
-  const [pokemons, setPomekons] = useState([]);
+  const { pokemons, loading } = usePokemons(15);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
-  
-  useEffect(() => {
-    const getPokemons = async () => {
-      try {
-        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=12")
-        const data = await res.json();
-      
-        const fetches = data.results.map(pokemon =>
-          fetch(pokemon.url).then(res => res.json())
-        );
-        const allData = await Promise.all(fetches);
-        console.log(allData);
-        
-        setPomekons(allData);
-        } catch(error) {
-            console.error(error);
-          };
-    };
-    getPokemons();
-      
-  }, []);
-  return(
+
+  if (loading) return <p>Cargando Pokemones...</p>;
+
+  return (
     <div className="contenedor-inicio-grid">
       {pokemons.map(pokemon => (
-        <div key={pokemon.id} className="maron" onClick={() => setSelectedPokemon(pokemon)}>
-          <div className="superior-blanco"></div>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-          <h3>{pokemon.name.toUpperCase()}</h3>
-        </div>        
+        <PokemonCard
+          key={pokemon.id}
+          pokemon={pokemon}
+          onClick={setSelectedPokemon}
+        />
       ))}
 
-      {selectedPokemon && (
-        <div className="modal-overlay" onClick={() => setSelectedPokemon(null)}>
-          <div className="modal modal-animado" onClick={e => e.stopPropagation()}>
-            <h2>{selectedPokemon.name.toUpperCase()}</h2>
-            <img className="img-modal" src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name} />
-            <p>Tipos: {selectedPokemon.types.map(t => t.type.name).join(", ")}</p>
-            <p>Peso: {selectedPokemon.weight}</p>
-          </div>
-        </div>
-      )}
+      <PokemonModal
+        pokemon={selectedPokemon}
+        onClose={() => setSelectedPokemon(null)}
+      />
     </div>
-  )
+  );
 };

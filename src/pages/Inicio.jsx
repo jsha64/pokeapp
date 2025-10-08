@@ -1,10 +1,13 @@
-import Nabvar from "../components/Navbar";
+import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import InputSearch from "../components/InputSearch";
 import { CardPokemons } from "../components/CardPokemons";
 
 const Inicio = () => {
   return (
     <>
-      <Nabvar />
+      <Navbar LinkComponent={Link} />
+      <InputSearch />
       <CardPokemons />
     </>
   );

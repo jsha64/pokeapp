@@ -1,15 +1,9 @@
-import Nabvar from "../components/Navbar";
-import { CardPokemons } from "../components/CardPokemons";
+import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 const Favoritos = () => {
     return (
       <>
-        <Nabvar />
-        <div className="contenedor_favoritos">
-          <h1>Favoritos</h1>
-          <div className="card_favoritos">
-            <CardPokemons />
-          </div>
-        </div>
+        <Navbar LinkComponent={Link} />
       </>
     );
 }

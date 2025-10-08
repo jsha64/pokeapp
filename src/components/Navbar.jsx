@@ -1,18 +1,20 @@
-import { Link } from 'react-router-dom';
-
-const Nabvar = () => {
+const Navbar = ({ LinkComponent }) => {
+  const routes = [
+    { path: "/", label: "Inicio" },
+    { path: "/favoritos", label: "Favoritos" }
+  ];
+  
   return (
     <nav className="navbar">
       <ul className="ul">
-        <li>
-          <Link to="/">Inicio</Link>
-        </li>
-        <li>
-          <Link to="/favoritos">Favoritos</Link>
-        </li>
+        {routes.map((route) => (
+          <li key={route.path}>
+            <LinkComponent to={route.path}>{route.label}</LinkComponent>
+          </li>
+        ))}
       </ul>
     </nav>
   );
 }
 
-export default Nabvar;
+export default Navbar;
